@@ -534,6 +534,9 @@
                         <a class="nav-link" href="<?php echo base_url('blog'); ?>">Blog</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('testimonials'); ?>">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-primary ms-2" href="<?php echo base_url('buy'); ?>">Buy Now</a>
                     </li>
                 </ul>
