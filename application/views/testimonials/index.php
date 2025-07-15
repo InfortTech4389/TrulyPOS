@@ -9,7 +9,7 @@
                     <p class="lead mb-4">Real stories from real businesses across India who have transformed their operations with Truly POS</p>
                     <div class="d-flex justify-content-center align-items-center gap-4">
                         <div class="text-center">
-                            <h3 class="fw-bold mb-1">10,000+</h3>
+                            <h3 class="fw-bold mb-1">15,000+</h3>
                             <p class="mb-0">Happy Customers</p>
                         </div>
                         <div class="text-center">
@@ -17,8 +17,8 @@
                             <p class="mb-0">Customer Rating</p>
                         </div>
                         <div class="text-center">
-                            <h3 class="fw-bold mb-1">99%</h3>
-                            <p class="mb-0">Satisfaction Rate</p>
+                            <h3 class="fw-bold mb-1">70</h3>
+                            <p class="mb-0">Success Stories</p>
                         </div>
                     </div>
                 </div>
@@ -39,8 +39,11 @@
                         <button class="btn btn-outline-primary filter-btn" data-filter="pharmacy">Pharmacy</button>
                         <button class="btn btn-outline-primary filter-btn" data-filter="electronics">Electronics</button>
                         <button class="btn btn-outline-primary filter-btn" data-filter="bookstore">Bookstore</button>
-                        <button class="btn btn-outline-primary filter-btn" data-filter="mobile">Mobile Store</button>
-                        <button class="btn btn-outline-primary filter-btn" data-filter="restaurant">Restaurant</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="mobilestore">Mobile Store</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="tyreshop">Tyre Shop</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="giftshop">Gift Shop</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="hardware">Hardware</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="stationery">Stationery</button>
                         <button class="btn btn-outline-primary filter-btn" data-filter="others">Others</button>
                     </div>
                 </div>
@@ -272,9 +275,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (filterValue === 'all' || 
                     category === filterValue || 
-                    (filterValue === 'mobile' && category === 'mobilestore') ||
-                    (filterValue === 'restaurant' && category === 'café') ||
-                    (filterValue === 'others' && !['grocery', 'fashion', 'pharmacy', 'electronics', 'bookstore', 'mobilestore', 'café'].includes(category))) {
+                    category.includes(filterValue) ||
+                    (filterValue === 'mobilestore' && category === 'mobilestore') ||
+                    (filterValue === 'tyreshop' && category === 'tyreshop') ||
+                    (filterValue === 'giftshop' && category === 'giftshop') ||
+                    (filterValue === 'hardware' && category === 'hardware') ||
+                    (filterValue === 'stationery' && category === 'stationery') ||
+                    (filterValue === 'others' && !['grocery', 'fashion', 'pharmacy', 'electronics', 'bookstore', 'mobilestore', 'tyreshop', 'giftshop', 'hardware', 'stationery', 'kiranastore', 'organicstore', 'petstore', 'beautysalon', 'autoparts', 'appliances', 'florist', 'generalstore', 'café', 'homedecor', 'cosmetics', 'agroproducts', 'footwear', 'luggage', 'handicrafts', 'toystore', 'sports', 'jewelry', 'computerstore', 'foodstore', 'agroindustries'].includes(category))) {
                     item.classList.remove('hidden');
                     item.classList.add('fade-in');
                 } else {

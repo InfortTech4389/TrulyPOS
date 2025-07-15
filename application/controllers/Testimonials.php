@@ -425,6 +425,166 @@ class Testimonials extends CI_Controller {
                 'review' => 'Running a general store means managing a lot of moving parts. Truly POS tracks credit accounts, supplier orders, and daily sales with no fuss. The reports help me plan new stock orders and analyze profit. My staff find billing much faster, and customer lines are shorter. It\'s a smart choice for any shop owner.',
                 'rating' => 5,
                 'category' => 'General Store'
+            ],
+            [
+                'name' => 'Sonali Shekhar',
+                'business' => 'Blossom Florist',
+                'location' => 'Gandhi Market, Jabalpur, Madhya Pradesh',
+                'review' => 'Running a florist shop means handling lots of small, perishable stock and frequent last-minute orders. Truly POS\'s expiry alerts help me reduce wastage and keep track of what\'s fresh. The system is quick to bill even during festival rush, and customers are happy with the digital payment options. I also love being able to see which flower varieties sell best each week. Staff learned to use it very quickly, and I can manage the business from my mobile anytime.',
+                'rating' => 5,
+                'category' => 'Florist'
+            ],
+            [
+                'name' => 'Yogesh Deshpande',
+                'business' => 'Galaxy Electronics Hub',
+                'location' => 'Pimpri, Pune, Maharashtra',
+                'review' => 'My electronics store carries many brands and gadgets, and earlier warranty tracking and inventory checks were confusing. With Truly POS, every item is easily billed with its barcode, and warranties are printed on the receipt. The dashboard gives me sales and profit insights daily, which help with ordering new stock. The support team is responsive and regularly adds new features. My staff are now more confident and our customer service has improved.',
+                'rating' => 5,
+                'category' => 'Electronics'
+            ],
+            [
+                'name' => 'Farida Khan',
+                'business' => 'Spice Route Kirana',
+                'location' => 'Charminar, Hyderabad, Telangana',
+                'review' => 'Truly POS changed how I manage my kirana store. From quick billing to automatic low-stock reminders, everything is streamlined. GST returns are a breeze, and digital payment support means I can serve more customers each day. The bulk item update saves me time on stock changes. My regulars love getting their bill copies on WhatsApp, and I\'ve gained new customers because checkout is so fast now.',
+                'rating' => 5,
+                'category' => 'Kirana Store'
+            ],
+            [
+                'name' => 'Pranav Mehta',
+                'business' => 'Urban Tyres & Wheels',
+                'location' => 'Paldi, Ahmedabad, Gujarat',
+                'review' => 'Truly POS helps me keep tabs on tyre models, sizes, and party credit accounts. The serial number tracking is very useful when customers return for warranty claims. During festival sales, the system handled high volume effortlessly and the end-of-day reports are comprehensive. My accountant also uses the export feature to Tally, which makes filing taxes much simpler. This software has boosted my confidence as a business owner.',
+                'rating' => 5,
+                'category' => 'Tyre Shop'
+            ],
+            [
+                'name' => 'Shalini Singh',
+                'business' => 'The Gift Gallery',
+                'location' => 'South Extension, New Delhi',
+                'review' => 'My gift shop always has new arrivals and seasonal offers. Truly POS makes it easy to add items, change prices, and apply combo deals. The software tracks fast-moving items so I never miss out on sales. Customers love the clear, colorful bills and the option to pay via UPI. I review daily sales trends on my phone and plan new stock accordingly. Billing errors have almost disappeared since we adopted this system.',
+                'rating' => 5,
+                'category' => 'Gift Shop'
+            ],
+            [
+                'name' => 'Ajit Pillai',
+                'business' => 'Healthy Living Organics',
+                'location' => 'Fort, Kochi, Kerala',
+                'review' => 'Our store focuses on organic and health products, which means keeping a close eye on expiry dates. Truly POS\'s expiry management and low-stock alerts are incredibly helpful. Billing is accurate and quick, even during busy weekends. The system\'s sales analysis helps me identify trends and adjust stock for the next month. My staff picked up the software very quickly. Support is friendly and always ready to answer our queries.',
+                'rating' => 5,
+                'category' => 'Organic Store'
+            ],
+            [
+                'name' => 'Mehul Shah',
+                'business' => 'ElectroCity Appliances',
+                'location' => 'SG Highway, Ahmedabad, Gujarat',
+                'review' => 'From big-ticket items to accessories, Truly POS handles my entire stock easily. Serial number tracking and warranty billing give customers confidence. My staff can process sales and returns quickly, and the reports help me decide what to promote next. We manage two outlets now and stock transfer is seamless. Truly POS has helped my business scale without the usual chaos.',
+                'rating' => 5,
+                'category' => 'Appliances'
+            ],
+            [
+                'name' => 'Simran Kapoor',
+                'business' => 'Simran\'s Style Studio',
+                'location' => 'Hiranandani Gardens, Powai, Mumbai, Maharashtra',
+                'review' => 'My boutique constantly rotates collections, and Truly POS lets me add new arrivals and update pricing in no time. The loyalty program keeps my regulars coming back. GST invoicing and return management are very straightforward, so my team can focus on customer service. Even seasonal sales are a breeze now. The mobile app lets me track the shop while I\'m away for sourcing trips.',
+                'rating' => 5,
+                'category' => 'Fashion'
+            ],
+            [
+                'name' => 'Rohit Prasad',
+                'business' => 'Rohit\'s General Store',
+                'location' => 'Sadar Bazar, Kanpur, Uttar Pradesh',
+                'review' => 'Managing a busy general store was stressful before Truly POS. Now, inventory, party credits, and GST billing are all automatic. The daily profit and loss reports help me analyze sales and reduce waste. My staff adapted to the system in just a few days. Digital receipts are appreciated by our customers and have reduced disputes over purchases.',
+                'rating' => 5,
+                'category' => 'General Store'
+            ],
+            [
+                'name' => 'Maya Rao',
+                'business' => 'Maya\'s Fine Foods',
+                'location' => 'Residency Road, Bengaluru, Karnataka',
+                'review' => 'Our specialty food shop needed a system to handle both packaged and fresh goods. Truly POS makes it simple to update prices, track expiry, and run offers during festivals. Customers get detailed, professional bills, and the WhatsApp receipts are a hit. The reporting dashboard lets me see which items to restock, helping us avoid shortages. I\'m glad we chose Truly POS for our growing business.',
+                'rating' => 5,
+                'category' => 'Food Store'
+            ],
+            [
+                'name' => 'Aman Joshi',
+                'business' => 'Books & Beyond',
+                'location' => 'Rajendra Place, New Delhi',
+                'review' => 'Selling school books and stationery was chaotic until we switched to Truly POS. Barcoding lets us handle sales and returns quickly, even during peak season. I love how easy it is to manage stock and create combo offers for students. The dashboard helps me plan inventory for the next semester. End-of-day closing is fast and I can track profits easily. Truly POS is made for bookshops.',
+                'rating' => 5,
+                'category' => 'Bookstore'
+            ],
+            [
+                'name' => 'Seema Menon',
+                'business' => 'Home Essentials',
+                'location' => 'Elamakkara, Kochi, Kerala',
+                'review' => 'Our homeware shop now runs smoothly thanks to Truly POS. Bulk uploads make adding new stock fast, and customers love the modern, detailed invoices. I can apply discounts during clearance sales with just a few clicks. The sales analysis shows which products are most popular, so I can adjust my buying strategy. Even my oldest staff member now handles billing with ease.',
+                'rating' => 5,
+                'category' => 'Home Decor'
+            ],
+            [
+                'name' => 'Arvind Kumar',
+                'business' => 'Kumar Agro Mart',
+                'location' => 'Kankarbagh, Patna, Bihar',
+                'review' => 'As an agro supplier, tracking bulk inventory and credits for farmers was a headache. Truly POS has made these tasks automatic and error-free. I can see real-time stock, bill in bulk, and manage GST with confidence. The mobile dashboard lets me check on sales from anywhere in the field. My staff picked up the software quickly and now spend less time on manual work.',
+                'rating' => 5,
+                'category' => 'Agro Products'
+            ],
+            [
+                'name' => 'Tina D\'Souza',
+                'business' => 'D\'Souza Stationery Hub',
+                'location' => 'Vasco, Goa',
+                'review' => 'Truly POS has streamlined our busy stationery shop. The barcode system makes billing lightning fast, and the loyalty program keeps schoolchildren coming back. Stock updates are quick and I can always check what\'s selling best. During exam season, even large crowds are handled smoothly. My accountant uses the export feature for tax filing, which is a big relief for me.',
+                'rating' => 5,
+                'category' => 'Stationery'
+            ],
+            [
+                'name' => 'Vinay Mehta',
+                'business' => 'Mehta Footwear',
+                'location' => 'Anna Salai, Chennai, Tamil Nadu',
+                'review' => 'With shoes of different sizes and brands, stock management was a struggle. Truly POS lets me categorize products easily and set up clearance offers in seconds. Billing is faster than ever and customers like the branded, colorful receipts. Stock transfer between my two shops is seamless. I use the sales analytics to predict demand and minimize unsold inventory.',
+                'rating' => 5,
+                'category' => 'Footwear'
+            ],
+            [
+                'name' => 'Shikha Aggarwal',
+                'business' => 'Springfield Gifts',
+                'location' => 'Park Lane, Jaipur, Rajasthan',
+                'review' => 'Gifting is a seasonal business and Truly POS keeps me ahead with quick product addition and combo offers. My staff can now track stock and apply discounts on the spot. Customers enjoy the professional, detailed bills and digital payment support. The end-of-day reports help me plan for upcoming festivals. The support team always helps promptly when we have questions.',
+                'rating' => 5,
+                'category' => 'Gift Shop'
+            ],
+            [
+                'name' => 'Abhay Pillai',
+                'business' => 'Pillai Mobile Point',
+                'location' => 'JP Nagar, Bengaluru, Karnataka',
+                'review' => 'Selling mobiles and accessories requires tracking IMEIs and warranties, and Truly POS makes it effortless. The barcode billing is smooth and exchanges are now managed without hassle. I use the profit reports to plan which brands to promote. My staff can handle festival rushes easily and customers get instant WhatsApp receipts. The regular updates keep adding new features we need.',
+                'rating' => 5,
+                'category' => 'Mobile Store'
+            ],
+            [
+                'name' => 'Mona Rathi',
+                'business' => 'Little Champs Toy Land',
+                'location' => 'Laxmi Road, Pune, Maharashtra',
+                'review' => 'Our toy shop has hundreds of SKUs and new arrivals each month. Truly POS lets us update inventory and billing quickly, so we\'re always ready for the next trend. The combo offer and loyalty features are especially useful. Billing errors have gone down, and the staff enjoy using the mobile dashboard to track sales. The support team is friendly and proactive.',
+                'rating' => 5,
+                'category' => 'Toy Store'
+            ],
+            [
+                'name' => 'Tarun Sethi',
+                'business' => 'Sethi Hardware & Paints',
+                'location' => 'Nayapalli, Bhubaneswar, Odisha',
+                'review' => 'Hardware billing and credit management were always tough before Truly POS. Now, even large party orders and supplier credits are tracked easily. My accountant loves the GST-ready reports, and bulk price updates save us a lot of time. The barcode billing impresses our customers. Staff find it simple to use, and returns are managed with zero confusion.',
+                'rating' => 5,
+                'category' => 'Hardware'
+            ],
+            [
+                'name' => 'Krupa Desai',
+                'business' => 'Krupa\'s Chemist & Wellness',
+                'location' => 'Science City, Ahmedabad, Gujarat',
+                'review' => 'Managing a pharmacy with hundreds of products and expiry dates was overwhelming. Truly POS gives automatic expiry and batch alerts, reducing wastage. GST billing is simple, and I can offer loyalty points to my regulars. The sales reports help me reorder only what\'s needed. My team adapted to the system quickly and customers appreciate the clear, fast service.',
+                'rating' => 5,
+                'category' => 'Pharmacy'
             ]
         ];
     }
