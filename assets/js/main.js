@@ -10,7 +10,6 @@ $(document).ready(function() {
     initializeAnimations();
     initializePaymentForm();
     initializeMegaMenu();
-    initializeMegaMenu();
     
     // Smooth scrolling for anchor links
     $('a[href^="#"]').on('click', function(e) {
@@ -215,21 +214,18 @@ function initializeMegaMenu() {
     // Handle industry item hover/click
     industryItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
-            // Only on desktop
-            if (window.innerWidth > 991) {
-                // Remove active class from all items
-                industryItems.forEach(i => i.classList.remove('active'));
-                businessCategories.forEach(cat => cat.classList.remove('active'));
-                
-                // Add active class to current item
-                this.classList.add('active');
-                
-                // Show corresponding business category
-                const industry = this.getAttribute('data-industry');
-                const targetCategory = document.getElementById(industry + '-businesses');
-                if (targetCategory) {
-                    targetCategory.classList.add('active');
-                }
+            // Remove active class from all items
+            industryItems.forEach(i => i.classList.remove('active'));
+            businessCategories.forEach(cat => cat.classList.remove('active'));
+            
+            // Add active class to current item
+            this.classList.add('active');
+            
+            // Show corresponding business category
+            const industry = this.getAttribute('data-industry');
+            const targetCategory = document.getElementById(industry + '-businesses');
+            if (targetCategory) {
+                targetCategory.classList.add('active');
             }
         });
         
@@ -255,79 +251,51 @@ function initializeMegaMenu() {
         });
     });
     
-    // Handle mega menu dropdown
-    if (megaDropdown && megaMenu) {
-        let hoverTimeout;
-        
-        // Desktop hover
-        megaDropdown.addEventListener('mouseenter', function() {
-            if (window.innerWidth > 991) {
-                clearTimeout(hoverTimeout);
-                this.classList.add('show');
-                
-                // Show first category by default
-                if (industryItems.length > 0) {
-                    industryItems[0].classList.add('active');
-                    const firstIndustry = industryItems[0].getAttribute('data-industry');
-                    const firstCategory = document.getElementById(firstIndustry + '-businesses');
-                    if (firstCategory) {
-                        firstCategory.classList.add('active');
-                    }
+    // Handle dropdown show/hide
+    if (megaDropdown) {
+        megaDropdown.addEventListener('show.bs.dropdown', function () {
+            // Set first industry as active by default
+            industryItems.forEach(i => i.classList.remove('active'));
+            businessCategories.forEach(cat => cat.classList.remove('active'));
+            
+            const firstIndustry = industryItems[0];
+            if (firstIndustry) {
+                firstIndustry.classList.add('active');
+                const industry = firstIndustry.getAttribute('data-industry');
+                const targetCategory = document.getElementById(industry + '-businesses');
+                if (targetCategory) {
+                    targetCategory.classList.add('active');
                 }
             }
         });
-        
-        megaDropdown.addEventListener('mouseleave', function() {
-            if (window.innerWidth > 991) {
-                hoverTimeout = setTimeout(() => {
-                    this.classList.remove('show');
-                    // Reset active states
-                    industryItems.forEach(i => i.classList.remove('active'));
-                    businessCategories.forEach(cat => cat.classList.remove('active'));
-                }, 300);
-            }
-        });
-        
-        // Mobile click
-        if (dropdownToggle) {
-            dropdownToggle.addEventListener('click', function(e) {
-                if (window.innerWidth <= 991) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    megaDropdown.classList.toggle('show');
-                    
-                    // Show first category by default on mobile
-                    if (megaDropdown.classList.contains('show') && industryItems.length > 0) {
-                        industryItems[0].classList.add('active');
-                        const firstIndustry = industryItems[0].getAttribute('data-industry');
-                        const firstCategory = document.getElementById(firstIndustry + '-businesses');
-                        if (firstCategory) {
-                            firstCategory.classList.add('active');
-                        }
-                    }
-                }
-            });
-        }
     }
-    
-    // Close mega menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (megaDropdown && !megaDropdown.contains(e.target)) {
-            megaDropdown.classList.remove('show');
-            industryItems.forEach(i => i.classList.remove('active'));
-            businessCategories.forEach(cat => cat.classList.remove('active'));
-        }
-    });
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 991) {
-            megaDropdown?.classList.remove('show');
-            industryItems.forEach(i => i.classList.remove('active'));
-            businessCategories.forEach(cat => cat.classList.remove('active'));
-        }
-    });
 }
+
+// Debug dropdown functionality
+$(document).ready(function() {
+    // Force dropdown to work
+    $('.dropdown-toggle').click(function(e) {
+        e.preventDefault();
+        const $dropdown = $(this).parent();
+        const $menu = $dropdown.find('.dropdown-menu');
+        
+        // Close other dropdowns
+        $('.dropdown-menu').not($menu).removeClass('show');
+        $('.dropdown').not($dropdown).removeClass('show');
+        
+        // Toggle current dropdown
+        $dropdown.toggleClass('show');
+        $menu.toggleClass('show');
+    });
+    
+    // Close dropdown when clicking outside
+    $(document).click(function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').removeClass('show');
+            $('.dropdown').removeClass('show');
+        }
+    });
+});
 
 // Validate payment form
 function validatePaymentForm(form) {
