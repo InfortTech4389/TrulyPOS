@@ -59,456 +59,389 @@
                             Who We Serve
                         </a>
                         <div class="dropdown-menu mega-menu" aria-labelledby="industriesDropdown">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h6 class="dropdown-header">Industries</h6>
-                                        <div class="industry-menu-list">
-                                            <a class="dropdown-item industry-item active" href="#" data-industry="apparel">
-                                                <i class="fas fa-tshirt me-2"></i>Apparel & Footwear
+                            <div class="mega-menu-container">
+                                <!-- Left Panel: Categories -->
+                                <div class="menu-categories">
+                                    <div class="category-item active" data-category="apparel">
+                                        <span>Apparel & Footwear</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="restaurant">
+                                        <span>Restaurants & Cafes</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="electronics">
+                                        <span>Electronics & Computers</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="hypermarket">
+                                        <span>Hypermarket & Departmental Stores</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="lifestyle">
+                                        <span>Lifestyle & Fashion</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="pharma">
+                                        <span>Pharma & Healthcare</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="grocery">
+                                        <span>Supermarket & Groceries</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                    <div class="category-item" data-category="specialized">
+                                        <span>Specialized Retail</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right Panel: Subcategories -->
+                                <div class="menu-subcategories">
+                                    <!-- Apparel & Footwear Subcategories -->
+                                    <div class="subcategory-group active" id="apparel-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-tshirt"></i>
+                                                </div>
+                                                <span>Apparel</span>
                                             </a>
-                                            <a class="dropdown-item industry-item" href="#" data-industry="electronics">
-                                                <i class="fas fa-laptop me-2"></i>Electronics & Computers
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-user-tie"></i>
+                                                </div>
+                                                <span>Clothing</span>
                                             </a>
-                                            <a class="dropdown-item industry-item" href="#" data-industry="hypermarket">
-                                                <i class="fas fa-building me-2"></i>Hypermarket & Departmental
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-store"></i>
+                                                </div>
+                                                <span>Boutiques</span>
                                             </a>
-                                            <a class="dropdown-item industry-item" href="#" data-industry="lifestyle">
-                                                <i class="fas fa-gem me-2"></i>Lifestyle & Fashion
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-mask"></i>
+                                                </div>
+                                                <span>Fancy Costume</span>
                                             </a>
-                                            <a class="dropdown-item industry-item" href="#" data-industry="pharma">
-                                                <i class="fas fa-pills me-2"></i>Pharma & Healthcare
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-shoe-prints"></i>
+                                                </div>
+                                                <span>Footwear</span>
                                             </a>
-                                            <a class="dropdown-item industry-item" href="#" data-industry="grocery">
-                                                <i class="fas fa-shopping-basket me-2"></i>Supermarket & Groceries
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-shopping-bag"></i>
+                                                </div>
+                                                <span>Readymade Garment</span>
                                             </a>
-                                            <a class="dropdown-item industry-item" href="#" data-industry="specialized">
-                                                <i class="fas fa-cogs me-2"></i>Specialized Retail
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-running"></i>
+                                                </div>
+                                                <span>Shoes</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-cut"></i>
+                                                </div>
+                                                <span>Textile</span>
                                             </a>
                                         </div>
-                                        <hr>
-                                        <a class="dropdown-item text-primary fw-bold" href="<?php echo base_url('industries'); ?>">
-                                            <i class="fas fa-arrow-right me-2"></i>View All Industries
-                                        </a>
+                                        <!-- Restaurants & Cafes Subcategories -->
+                                        <div class="subcategory-group" id="restaurant-subcategories">
+                                            <div class="subcategory-grid">
+                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
+                                                    <div class="subcategory-icon" style="background: #ffe0b2; color: #ff9800;"><i class="fas fa-utensils"></i></div>
+                                                    <span>Restaurants</span>
+                                                </a>
+                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
+                                                    <div class="subcategory-icon" style="background: #b2dfdb; color: #009688;"><i class="fas fa-coffee"></i></div>
+                                                    <span>Cafes</span>
+                                                </a>
+                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
+                                                    <div class="subcategory-icon" style="background: #c8e6c9; color: #388e3c;"><i class="fas fa-pizza-slice"></i></div>
+                                                    <span>Pizza Shops</span>
+                                                </a>
+                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
+                                                    <div class="subcategory-icon" style="background: #ffcdd2; color: #d32f2f;"><i class="fas fa-ice-cream"></i></div>
+                                                    <span>Ice Cream Parlors</span>
+                                                </a>
+                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
+                                                    <div class="subcategory-icon" style="background: #d1c4e9; color: #512da8;"><i class="fas fa-birthday-cake"></i></div>
+                                                    <span>Bakeries</span>
+                                                </a>
+                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
+                                                    <div class="subcategory-icon" style="background: #fff9c4; color: #fbc02d;"><i class="fas fa-hamburger"></i></div>
+                                                    <span>Quick Service</span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="business-types-grid">
-                                            <!-- Apparel & Footwear -->
-                                            <div class="business-category active" id="apparel-businesses">
-                                                <h6 class="dropdown-header">Apparel & Footwear Businesses</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-tshirt"></i>
-                                                                <span>Apparel</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-user-tie"></i>
-                                                                <span>Clothing</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-store"></i>
-                                                                <span>Boutiques</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-mask"></i>
-                                                                <span>Fancy Costume</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-shoe-prints"></i>
-                                                                <span>Footwear</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-shopping-bag"></i>
-                                                                <span>Readymade Garment</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-dark text-white">
-                                                                <i class="fas fa-running"></i>
-                                                                <span>Shoes</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-muted text-white">
-                                                                <i class="fas fa-cut"></i>
-                                                                <span>Textile</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                    
+                                    <!-- Electronics & Computers Subcategories -->
+                                    <div class="subcategory-group" id="electronics-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-camera"></i>
                                                 </div>
-                                            </div>
-                                            
-                                            <!-- Electronics & Computers -->
-                                            <div class="business-category" id="electronics-businesses">
-                                                <h6 class="dropdown-header">Electronics & Computers</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-camera"></i>
-                                                                <span>Camera & Accessories</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-desktop"></i>
-                                                                <span>Computer Hardware</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-plug"></i>
-                                                                <span>Electrical</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-microchip"></i>
-                                                                <span>Electronics</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-blender"></i>
-                                                                <span>Home Appliances</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-mobile-alt"></i>
-                                                                <span>Mobile & Accessories</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-dark text-white">
-                                                                <i class="fas fa-gamepad"></i>
-                                                                <span>Videos & Games</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                <span>Camera & Accessories</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-desktop"></i>
                                                 </div>
-                                            </div>
-                                            
-                                            <!-- Hypermarket & Departmental -->
-                                            <div class="business-category" id="hypermarket-businesses">
-                                                <h6 class="dropdown-header">Hypermarket & Departmental</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-store-alt"></i>
-                                                                <span>Hypermarket</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                                <span>Departmental Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-warehouse"></i>
-                                                                <span>Superstore</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-link"></i>
-                                                                <span>Retail Chain</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-university"></i>
-                                                                <span>Shopping Mall</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-store"></i>
-                                                                <span>Convenience Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                <span>Computer Hardware</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-bolt"></i>
                                                 </div>
-                                            </div>
-                                            
-                                            <!-- Lifestyle & Fashion -->
-                                            <div class="business-category" id="lifestyle-businesses">
-                                                <h6 class="dropdown-header">Lifestyle & Fashion</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-female"></i>
-                                                                <span>Fashion Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-magic"></i>
-                                                                <span>Beauty & Cosmetics</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-gem"></i>
-                                                                <span>Jewelry</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-ring"></i>
-                                                                <span>Accessories</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-heart"></i>
-                                                                <span>Lifestyle Products</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-spa"></i>
-                                                                <span>Wellness</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                <span>Electrical</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-microchip"></i>
                                                 </div>
-                                            </div>
-                                            
-                                            <!-- Pharma & Healthcare -->
-                                            <div class="business-category" id="pharma-businesses">
-                                                <h6 class="dropdown-header">Pharma & Healthcare</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-pills"></i>
-                                                                <span>Pharmacy</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-clinic-medical"></i>
-                                                                <span>Medical Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-heartbeat"></i>
-                                                                <span>Healthcare Products</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-stethoscope"></i>
-                                                                <span>Surgical Equipment</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-leaf"></i>
-                                                                <span>Ayurvedic Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-tooth"></i>
-                                                                <span>Dental Clinic</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                <span>Electronics</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-home"></i>
                                                 </div>
-                                            </div>
-                                            
-                                            <!-- Supermarket & Groceries -->
-                                            <div class="business-category" id="grocery-businesses">
-                                                <h6 class="dropdown-header">Supermarket & Groceries</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-shopping-basket"></i>
-                                                                <span>Supermarket</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-apple-alt"></i>
-                                                                <span>Grocery Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-store"></i>
-                                                                <span>Mini Market</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-seedling"></i>
-                                                                <span>Organic Store</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-bread-slice"></i>
-                                                                <span>Bakery</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-cheese"></i>
-                                                                <span>Dairy Products</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                <span>Home Appliances</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-mobile-alt"></i>
                                                 </div>
-                                            </div>
-                                            
-                                            <!-- Specialized Retail -->
-                                            <div class="business-category" id="specialized-businesses">
-                                                <h6 class="dropdown-header">Specialized Retail</h6>
-                                                <div class="row g-2">
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-primary text-white">
-                                                                <i class="fas fa-book"></i>
-                                                                <span>Books & Stationery</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-success text-white">
-                                                                <i class="fas fa-dumbbell"></i>
-                                                                <span>Sports & Fitness</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-warning text-white">
-                                                                <i class="fas fa-puzzle-piece"></i>
-                                                                <span>Toys & Games</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-danger text-white">
-                                                                <i class="fas fa-car"></i>
-                                                                <span>Automotive Parts</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-info text-white">
-                                                                <i class="fas fa-paw"></i>
-                                                                <span>Pet Supplies</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-secondary text-white">
-                                                                <i class="fas fa-wrench"></i>
-                                                                <span>Hardware & Tools</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6">
-                                                        <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="business-type-link">
-                                                            <div class="business-type-card bg-dark text-white">
-                                                                <i class="fas fa-tree"></i>
-                                                                <span>Garden & Nursery</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                <span>Mobile & Accessories</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-gamepad"></i>
                                                 </div>
-                                            </div>
+                                                <span>Games & Accessories</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Hypermarket & Departmental Subcategories -->
+                                    <div class="subcategory-group" id="hypermarket-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-building"></i>
+                                                </div>
+                                                <span>Hypermarket</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-store-alt"></i>
+                                                </div>
+                                                <span>Departmental Store</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </div>
+                                                <span>Superstore</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-link"></i>
+                                                </div>
+                                                <span>Retail Chain</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-shopping-bag"></i>
+                                                </div>
+                                                <span>Shopping Mall</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-store"></i>
+                                                </div>
+                                                <span>Convenience Store</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Lifestyle & Fashion Subcategories -->
+                                    <div class="subcategory-group" id="lifestyle-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-female"></i>
+                                                </div>
+                                                <span>Fashion Store</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-magic"></i>
+                                                </div>
+                                                <span>Beauty & Cosmetics</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-gem"></i>
+                                                </div>
+                                                <span>Jewelry</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-ring"></i>
+                                                </div>
+                                                <span>Accessories</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-heart"></i>
+                                                </div>
+                                                <span>Lifestyle Products</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-spa"></i>
+                                                </div>
+                                                <span>Wellness</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Pharma & Healthcare Subcategories -->
+                                    <div class="subcategory-group" id="pharma-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-pills"></i>
+                                                </div>
+                                                <span>Pharmacy</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-clinic-medical"></i>
+                                                </div>
+                                                <span>Medical Store</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-heartbeat"></i>
+                                                </div>
+                                                <span>Healthcare Products</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-stethoscope"></i>
+                                                </div>
+                                                <span>Surgical Equipment</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-leaf"></i>
+                                                </div>
+                                                <span>Ayurvedic Store</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-tooth"></i>
+                                                </div>
+                                                <span>Dental Clinic</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Supermarket & Groceries Subcategories -->
+                                    <div class="subcategory-group" id="grocery-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-shopping-basket"></i>
+                                                </div>
+                                                <span>Supermarket</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-store"></i>
+                                                </div>
+                                                <span>Grocery Store</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </div>
+                                                <span>Mini Market</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-leaf"></i>
+                                                </div>
+                                                <span>Organic Store</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-bread-slice"></i>
+                                                </div>
+                                                <span>Bakery</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-cheese"></i>
+                                                </div>
+                                                <span>Dairy Products</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Specialized Retail Subcategories -->
+                                    <div class="subcategory-group" id="specialized-subcategories">
+                                        <div class="subcategory-grid">
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                                <span>Books & Stationery</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-dumbbell"></i>
+                                                </div>
+                                                <span>Sports & Fitness</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-puzzle-piece"></i>
+                                                </div>
+                                                <span>Toys & Games</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-car"></i>
+                                                </div>
+                                                <span>Automotive Parts</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-paw"></i>
+                                                </div>
+                                                <span>Pet Supplies</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-wrench"></i>
+                                                </div>
+                                                <span>Hardware & Tools</span>
+                                            </a>
+                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
+                                                <div class="subcategory-icon">
+                                                    <i class="fas fa-tree"></i>
+                                                </div>
+                                                <span>Garden & Nursery</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
