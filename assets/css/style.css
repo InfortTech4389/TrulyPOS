@@ -475,35 +475,406 @@ footer ul li a:hover {
     color: rgba(255,255,255,0.9);
 }
 
-/* Mega Menu Styles */
-.mega-dropdown {
-    position: relative;
-}
-
+/* ====== MEGA MENU PROPORTION/UI PERFECTED ====== */
 .mega-menu {
     position: absolute;
-    top: 100%;
     left: 50%;
+    top: 100%;
     transform: translateX(-50%);
-    width: 800px;
-    max-width: 90vw;
-    background: white;
-    border: 1px solid #dee2e6;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    padding: 2rem;
-    z-index: 1000;
-    margin-top: 10px;
+    min-width: 740px;       /* Slightly less than before */
+    max-width: 900px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 38px 0 rgba(30,41,59,.10), 0 2px 4px 0 rgba(30,41,59,.03);
+    z-index: 1050;
+    margin-top: 16px;
     display: none;
+    font-family: 'Inter', Arial, sans-serif;
+    padding: 0;
+    overflow: hidden;
 }
-
 .mega-dropdown:hover .mega-menu,
 .mega-dropdown.show .mega-menu {
     display: block;
 }
-
-.mega-dropdown .dropdown-menu.show {
+.mega-menu-inner {
+    display: flex;
+    min-width: 740px;
+    max-width: 900px;
+    min-height: 270px;
+    max-height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+}
+/* Left: Category panel (narrower, icons smaller) */
+.mega-menu-cats {
+    width: 172px;   /* just enough for icon + 2 lines of text */
+    min-width: 145px;
+    max-width: 195px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+.cat-link {
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222a36;
+    border-left: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: background 0.13s, color 0.13s, border-color 0.18s;
+    background: none;
+    border-radius: 0 14px 14px 0;
+    min-height: 36px;
+    line-height: 1.1;
+}
+.cat-link.active, .cat-link:hover {
+    background: #e6f0fa;
+    color: #2563eb;
+    border-left: 3px solid #2563eb;
+}
+.cat-link i {
+    font-size: 16px;
+    min-width: 17px;
+    text-align: center;
+    opacity: 0.82;
+}
+/* ===== Right Panel: Subcategories ===== */
+.mega-menu-content {
+    flex: 1 1 0;
+    padding: 28px 24px 28px 24px;
+    overflow-x: auto;
+    background: #fff;
+    min-width: 500px;   /* makes right panel wider */
+    max-width: 700px;
+}
+.subcat-panel {
+    display: none;
+}
+.subcat-panel.active {
     display: block;
+}
+.subcat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* always 4 per row */
+    gap: 18px 18px;
+}
+.subcat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 9px 0 8px 0;
+    background: #f8fafc;
+    border-radius: 9px;
+    text-decoration: none;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    transition: all 0.15s;
+    min-width: 76px;
+    min-height: 54px;
+    box-shadow: none;
+    cursor: pointer;
+}
+.subcat-box:hover {
+    background: #e0edfa;
+    color: #2563eb;
+    box-shadow: 0 4px 12px 0 rgba(30, 41, 59, 0.05);
+    text-decoration: none;
+}
+.subcat-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+    border-radius: 6px;
+    background: #f0f7ff;
+    font-size: 13px;
+    color: #2563eb;
+}
+.subcat-label {
+    font-size: 10.2px;
+    font-weight: 500;
+    text-align: center;
+    color: inherit;
+    line-height: 1.12;
+    letter-spacing: 0;
+}
+/* ===== Scrollbar for Right Panel ===== */
+.mega-menu-content::-webkit-scrollbar {
+    height: 7px;
+    background: #f1f5f9;
+}
+.mega-menu-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+/* Responsive for Tablets/Mobile */
+@media (max-width: 1200px) {
+    .mega-menu,
+    .mega-menu-inner {
+        min-width: 98vw;
+        max-width: 100vw;
+    }
+    .mega-menu-content {
+        padding: 16px 3vw;
+        min-width: 60vw;
+        max-width: 100vw;
+    }
+    .mega-menu-cats {
+        width: 21vw;
+        min-width: 112px;
+        max-width: 29vw;
+    }
+}
+@media (max-width: 991.98px) {
+    .mega-menu,
+    .mega-menu-inner {
+        min-width: 100vw;
+        max-width: 100vw;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        margin-top: 0;
+        top: 70px !important;
+        position: fixed !important;
+        z-index: 1100 !important;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+    .mega-menu-inner {
+        flex-direction: column;
+        min-width: 100vw;
+        max-width: 100vw;
+        min-height: auto;
+        max-height: none;
+    }
+    .mega-menu-cats {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        overflow-x: auto;
+        gap: 0;
+        padding: 9px 0;
+    }
+    
+    /* Desktop view: wider & taller megamenu */
+@media (min-width: 992px) {
+  .mega-menu-cats {
+    width: 350px;    /* Increase width as needed */
+    min-height: 400px; /* Increase height as needed */
+    /* Or use 'height' instead of 'min-height' for a fixed height */
+    /* height: 450px; */
+    overflow-y: auto; /* Optional: add scroll if content overflows */
+  }
+}
+
+    .cat-link {
+        border-radius: 0;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 7px 8px;
+        font-size: 12px;
+        min-width: 66px;
+        justify-content: center;
+    }
+    .cat-link.active, .cat-link:hover {
+        border-left: none;
+        border-bottom: 2px solid #2563eb;
+        background: #e6f0fa;
+        color: #2563eb;
+    }
+    .mega-menu-content {
+        padding: 9px 2vw;
+        min-width: 90vw;
+        max-width: 100vw;
+    }
+    .subcat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+    }
+    .subcat-box {
+        padding: 4px 0 4px 0;
+        min-width: 50px;
+        min-height: 39px;
+    }
+    .subcat-icon {
+        width: 15px;
+        height: 15px;
+        font-size: 9px;
+    }
+    .subcat-label {
+        font-size: 8.5px;
+    }
+}
+.cat-link[data-target="electronics"] i { color: #ea580c; }
+.cat-link[data-target="hypermarket"] i { color: #22c55e; }
+.cat-link[data-target="lifestyle"] i { color: #c026d3; }
+.cat-link[data-target="pharma"] i { color: #0891b2; }
+.cat-link[data-target="grocery"] i { color: #84cc16; }
+.cat-link[data-target="specialized"] i { color: #db2777; }
+.cat-link[data-target="multi-chain"] i { color: #a21caf; }
+
+/* Optionally style subcategory icon backgrounds by category as needed */
+
+
+/* Right panel: business types */
+.menu-business-types {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 36px;
+    overflow-y: auto;
+    max-height: 460px;
+}
+
+/* Business type card */
+.business-type-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f8fafd;
+    border-radius: 12px;
+    padding: 16px 12px;
+    transition: box-shadow .14s, background .14s;
+    cursor: pointer;
+    text-decoration: none;
+    color: #2b3554;
+    border: none;
+    min-width: 105px;
+    min-height: 90px;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Business type hover */
+.business-type-item:hover {
+    box-shadow: 0 2px 12px rgba(18,105,211,0.06);
+    background: #f0f5ff;
+    color: #1269d3;
+    text-decoration: none;
+}
+
+/* Icon/emoji support for business type */
+.type-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    font-size: 28px;
+    margin-bottom: 3px;
+}
+
+/* Business type label */
+.business-type-item span {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.business-category {
+    display: none;
+}
+
+.business-category.active {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* View All Link */
+.view-all-link {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.view-all-link a {
+    color: #0d60d8;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-all-link a:hover {
+    color: #0a4ba8;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .mega-menu {
+        min-width: 100%;
+        max-width: 100%;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        margin-top: 0;
+        position: static;
+        box-shadow: none;
+        border-top: 1px solid #e2e8f0;
+    }
+    
+    .mega-menu-container {
+        flex-direction: column;
+        min-height: auto;
+        max-height: none;
+    }
+    
+    .menu-categories {
+        min-width: auto;
+        background: white;
+        border-right: none;
+        border-bottom: 1px solid #e4e7ee;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+    
+    .menu-category {
+        white-space: nowrap;
+        padding: 8px 16px;
+        margin: 0 4px;
+        border-radius: 20px;
+        font-size: 13px;
+    }
+    
+    .menu-business-types {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 16px;
+        max-height: 300px;
+    }
+    
+    .business-type-item {
+        padding: 12px 8px;
+        min-height: 80px;
+    }
+    
+    .business-type-item i {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    
+    .business-type-item span {
+        font-size: 11px;
+    }
 }
 
 .industry-menu-list {
@@ -1422,4 +1793,77 @@ footer ul li a:hover {
 .business-type-card p,
 .feature-card p {
     color: #666 !important;
+}
+
+/* Mega Menu Styles */
+.mega-menu { min-width: 740px; border-radius:18px; }
+.mega-menu-inner { min-height: 350px; display: flex; flex-direction: row; }
+.mega-menu-cats ul { margin:0; padding:0; }
+.cat-link {
+    padding: 16px 28px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #222;
+    transition: background .15s;
+}
+.cat-link.active, .cat-link:hover {
+    background: #f6f7fa;
+    color: #1976d2;
+}
+.cat-link .fa-chevron-right { font-size: 16px; vertical-align: middle; }
+.mega-menu-content { width: 100%; padding: 32px 40px; }
+.subcat-panel { display: none; }
+.subcat-panel.active { display: block; }
+.subcat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 14px;
+    padding: 24px 0 16px 0;
+    background: #f9f9f9;
+    transition: box-shadow .15s, background .15s;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    min-height: 130px;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+.subcat-box:hover {
+    background: #f1f7ff;
+    box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
+    color: #1976d2;
+    text-decoration: none;
+}
+.subcat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+.bg-apparel { background: #e3f0ff; color: #2874f0; }
+.bg-clothing { background: #e4ffe8; color: #43a047; }
+.bg-boutique { background: #ede7f6; color: #7e57c2; }
+.bg-fancy { background: #fff8e1; color: #ffb300; }
+.bg-footwear { background: #fff3e0; color: #ef6c00; }
+.bg-readymade { background: #fffde7; color: #fbc02d; }
+.bg-shoes { background: #e1f5fe; color: #0288d1; }
+.bg-textile { background: #fce4ec; color: #ad1457; }
+.subcat-label { font-size: 17px; font-weight: 600; }
+@media (max-width: 991px) {
+    .mega-menu-inner { flex-direction: column; min-height: 0; }
+    .mega-menu-cats, .mega-menu-content { width:100% !important; border:0 !important; }
+    .mega-menu-content { padding: 1rem 1rem !important; }
+    .cat-link { font-size: 15px; padding: 12px 16px; }
+    .subcat-box { font-size: 14px; padding: 14px 0 8px 0; min-height: 90px; }
+    .subcat-icon { width: 40px; height: 40px; font-size: 18px; margin-bottom: 6px; }
+    .subcat-label { font-size: 14px; }
 }

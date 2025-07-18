@@ -1,0 +1,537 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Notification_service {
+    
+    protected $CI;
+    protected $email_config;
+    protected $whatsapp_config;
+    
+    public function __construct()
+    {
+        $this->CI =& get_instance();
+        $this->CI->load->database();
+        
+        // Load configurations if they exist
+        if (file_exists(APPPATH . 'config/email.php')) {
+            $this->CI->load->config('email');
+            $this->email_config = $this->CI->config->item('email');
+        } else {
+            $this->email_config = array(
+                'protocol' => 'mail',
+                'mailtype' => 'html',
+                'charset' => 'utf-8',
+                'from_email' => 'noreply@trulypos.com',
+                'from_name' => 'TrulyPOS'
+            );
+        }
+        
+        if (file_exists(APPPATH . 'config/whatsapp.php')) {
+            $this->CI->load->config('whatsapp');
+            $this->whatsapp_config = $this->CI->config->item('whatsapp');
+        } else {
+            $this->whatsapp_config = array();
+        }
+        
+        // Initialize email library with safe configuration
+        $this->CI->load->library('email');
+        if (!empty($this->email_config)) {
+            $this->CI->email->initialize($this->email_config);
+        }
+    }
+    
+    /**
+     * Send email notification
+     */
+    public function send_email($type, $data = [])
+    {
+        try {
+            switch ($type) {
+                case 'contact_form':
+                    return $this->send_contact_notification($data);
+                case 'order_confirmation':
+                    return $this->send_order_confirmation($data);
+                case 'license_delivery':
+                    return $this->send_license_email($data);
+                case 'demo_request':
+                    return $this->send_demo_notification($data);
+                case 'payment_success':
+                    return $this->send_payment_success($data);
+                case 'newsletter_welcome':
+                    return $this->send_newsletter_welcome($data);
+                default:
+                    return $this->send_custom_email($data);
+            }
+        } catch (Exception $e) {
+            log_message('error', 'Email sending failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+    
+    /**
+     * Send WhatsApp notification
+     */
+    public function send_whatsapp($type, $data = [])
+    {
+        if (!$this->CI->config->item('whatsapp_enabled')) {
+            return false;
+        }
+        
+        try {
+            $template = $this->get_whatsapp_template($type);
+            $message = $this->parse_template($template, $data);
+            
+            return $this->send_whatsapp_message($data['phone'], $message, $data);
+        } catch (Exception $e) {
+            log_message('error', 'WhatsApp sending failed: ' . $e->getMessage());
+            return false;
+        }
+    }
+    
+    /**
+     * Send both email and WhatsApp notification
+     */
+    public function send_notification($type, $data = [])
+    {
+        $results = [];
+        
+        // Send email if email is provided
+        if (!empty($data['email'])) {
+            $results['email'] = $this->send_email($type, $data);
+        }
+        
+        // Send WhatsApp if phone is provided
+        if (!empty($data['phone'])) {
+            $results['whatsapp'] = $this->send_whatsapp($type, $data);
+        }
+        
+        // Log notification
+        $this->log_notification($type, $data, $results);
+        
+        return $results;
+    }
+    
+    /**
+     * Contact form notification
+     */
+    private function send_contact_notification($data)
+    {
+        // Send to customer (acknowledgment)
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['email']);
+        $this->CI->email->subject('Thank you for contacting TrulyPOS');
+        
+        $customer_message = $this->load_email_template('contact_acknowledgment', $data);
+        $this->CI->email->message($customer_message);
+        
+        $customer_sent = $this->CI->email->send();
+        
+        // Send to admin
+        $this->CI->email->clear();
+        $this->CI->email->from($data['email'], $data['name']);
+        $this->CI->email->to($this->CI->config->item('admin_emails'));
+        $this->CI->email->subject('New Contact Form Submission - ' . $data['subject']);
+        
+        $admin_message = $this->load_email_template('contact_admin', $data);
+        $this->CI->email->message($admin_message);
+        
+        $admin_sent = $this->CI->email->send();
+        
+        return $customer_sent && $admin_sent;
+    }
+    
+    /**
+     * Order confirmation notification
+     */
+    private function send_order_confirmation($data)
+    {
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['email']);
+        $this->CI->email->subject('Order Confirmation - TrulyPOS Order #' . $data['order_id']);
+        
+        $message = $this->load_email_template('order_confirmation', $data);
+        $this->CI->email->message($message);
+        
+        return $this->CI->email->send();
+    }
+    
+    /**
+     * License delivery notification
+     */
+    private function send_license_email($data)
+    {
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['email']);
+        $this->CI->email->subject('Your TrulyPOS License Key - Ready to Download!');
+        
+        $message = $this->load_email_template('license_delivery', $data);
+        $this->CI->email->message($message);
+        
+        return $this->CI->email->send();
+    }
+    
+    /**
+     * Demo request notification
+     */
+    private function send_demo_notification($data)
+    {
+        // Send to customer
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['email']);
+        $this->CI->email->subject('Demo Request Received - TrulyPOS');
+        
+        $customer_message = $this->load_email_template('demo_acknowledgment', $data);
+        $this->CI->email->message($customer_message);
+        
+        $customer_sent = $this->CI->email->send();
+        
+        // Send to sales team
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to('sales@trulypos.com');
+        $this->CI->email->subject('New Demo Request - ' . $data['company']);
+        
+        $admin_message = $this->load_email_template('demo_admin', $data);
+        $this->CI->email->message($admin_message);
+        
+        $admin_sent = $this->CI->email->send();
+        
+        return $customer_sent && $admin_sent;
+    }
+    
+    /**
+     * Payment success notification
+     */
+    private function send_payment_success($data)
+    {
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['email']);
+        $this->CI->email->subject('Payment Successful - TrulyPOS License Activated!');
+        
+        $message = $this->load_email_template('payment_success', $data);
+        $this->CI->email->message($message);
+        
+        return $this->CI->email->send();
+    }
+    
+    /**
+     * Newsletter welcome email
+     */
+    private function send_newsletter_welcome($data)
+    {
+        $this->CI->email->clear();
+        $this->CI->email->from($this->CI->config->item('from_email'), $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['email']);
+        $this->CI->email->subject('Welcome to TrulyPOS Newsletter!');
+        
+        $message = $this->load_email_template('newsletter_welcome', $data);
+        $this->CI->email->message($message);
+        
+        return $this->CI->email->send();
+    }
+    
+    /**
+     * Send custom email
+     */
+    private function send_custom_email($data)
+    {
+        $this->CI->email->clear();
+        $this->CI->email->from($data['from_email'] ?? $this->CI->config->item('from_email'), 
+                                $data['from_name'] ?? $this->CI->config->item('from_name'));
+        $this->CI->email->to($data['to']);
+        $this->CI->email->subject($data['subject']);
+        $this->CI->email->message($data['message']);
+        
+        return $this->CI->email->send();
+    }
+    
+    /**
+     * Get WhatsApp template
+     */
+    private function get_whatsapp_template($type)
+    {
+        $templates = $this->CI->config->item('whatsapp_templates');
+        return $templates[$type] ?? '';
+    }
+    
+    /**
+     * Parse template with data
+     */
+    private function parse_template($template, $data)
+    {
+        foreach ($data as $key => $value) {
+            $template = str_replace('{' . $key . '}', $value, $template);
+        }
+        return $template;
+    }
+    
+    /**
+     * Send WhatsApp message via selected service
+     */
+    private function send_whatsapp_message($phone, $message, $data = [])
+    {
+        $service = $this->CI->config->item('whatsapp_service');
+        
+        // Clean phone number
+        $phone = $this->clean_phone_number($phone);
+        
+        switch ($service) {
+            case 'twilio':
+                return $this->send_via_twilio($phone, $message);
+            case 'msg91':
+                return $this->send_via_msg91($phone, $message);
+            case 'ultramsg':
+                return $this->send_via_ultramsg($phone, $message);
+            default:
+                return $this->send_via_basic_whatsapp($phone, $message);
+        }
+    }
+    
+    /**
+     * Send via Twilio WhatsApp API
+     */
+    private function send_via_twilio($phone, $message)
+    {
+        $account_sid = $this->CI->config->item('twilio_account_sid');
+        $auth_token = $this->CI->config->item('twilio_auth_token');
+        $from_number = $this->CI->config->item('twilio_whatsapp_number');
+        
+        if (empty($account_sid) || empty($auth_token)) {
+            return false;
+        }
+        
+        $url = "https://api.twilio.com/2010-04-01/Accounts/{$account_sid}/Messages.json";
+        
+        $data = [
+            'From' => 'whatsapp:' . $from_number,
+            'To' => 'whatsapp:' . $phone,
+            'Body' => $message
+        ];
+        
+        return $this->make_api_request($url, $data, [
+            'Authorization: Basic ' . base64_encode($account_sid . ':' . $auth_token)
+        ]);
+    }
+    
+    /**
+     * Send via MSG91 WhatsApp API
+     */
+    private function send_via_msg91($phone, $message)
+    {
+        $auth_key = $this->CI->config->item('msg91_auth_key');
+        
+        if (empty($auth_key)) {
+            return false;
+        }
+        
+        $url = "https://api.msg91.com/api/v5/whatsapp/whatsapp-outbound-message/";
+        
+        $data = [
+            'integrated_number' => 'YOUR_INTEGRATED_NUMBER',
+            'content_type' => 'text',
+            'payload' => [
+                'messaging_product' => 'whatsapp',
+                'to' => $phone,
+                'type' => 'text',
+                'text' => ['body' => $message]
+            ]
+        ];
+        
+        return $this->make_api_request($url, json_encode($data), [
+            'authkey: ' . $auth_key,
+            'Content-Type: application/json'
+        ]);
+    }
+    
+    /**
+     * Send via UltraMsg API
+     */
+    private function send_via_ultramsg($phone, $message)
+    {
+        $token = $this->CI->config->item('ultramsg_token');
+        $instance_id = $this->CI->config->item('ultramsg_instance_id');
+        
+        if (empty($token) || empty($instance_id)) {
+            return false;
+        }
+        
+        $url = "https://api.ultramsg.com/{$instance_id}/messages/chat";
+        
+        $data = [
+            'token' => $token,
+            'to' => $phone,
+            'body' => $message
+        ];
+        
+        return $this->make_api_request($url, $data);
+    }
+    
+    /**
+     * Send via basic WhatsApp (opens WhatsApp with pre-filled message)
+     */
+    private function send_via_basic_whatsapp($phone, $message)
+    {
+        // This doesn't actually send the message, but generates the WhatsApp URL
+        // Useful for generating links that users can click to send messages
+        $whatsapp_url = "https://api.whatsapp.com/send?phone={$phone}&text=" . urlencode($message);
+        
+        // Log the WhatsApp URL for manual sending or return it
+        log_message('info', 'WhatsApp URL generated: ' . $whatsapp_url);
+        
+        return $whatsapp_url;
+    }
+    
+    /**
+     * Make API request
+     */
+    private function make_api_request($url, $data, $headers = [])
+    {
+        $ch = curl_init();
+        
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, is_array($data) ? http_build_query($data) : $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        if ($http_code >= 200 && $http_code < 300) {
+            return json_decode($response, true);
+        }
+        
+        log_message('error', 'API request failed: ' . $response);
+        return false;
+    }
+    
+    /**
+     * Clean phone number
+     */
+    private function clean_phone_number($phone)
+    {
+        // Remove all non-numeric characters
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        
+        // Add country code if not present (assuming India +91)
+        if (strlen($phone) == 10) {
+            $phone = '91' . $phone;
+        }
+        
+        return '+' . $phone;
+    }
+    
+    /**
+     * Load email template
+     */
+    private function load_email_template($template, $data = [])
+    {
+        $template_path = $this->CI->config->item('template_path') . $template . '.php';
+        
+        if (file_exists($template_path)) {
+            ob_start();
+            extract($data);
+            include $template_path;
+            return ob_get_clean();
+        }
+        
+        // Return default template if file doesn't exist
+        return $this->get_default_email_template($template, $data);
+    }
+    
+    /**
+     * Get default email template
+     */
+    private function get_default_email_template($template, $data)
+    {
+        switch ($template) {
+            case 'contact_acknowledgment':
+                return "<h2>Thank you for contacting TrulyPOS!</h2>
+                        <p>Dear {$data['name']},</p>
+                        <p>We have received your message regarding: <strong>{$data['subject']}</strong></p>
+                        <p>Our team will respond within 24 hours.</p>
+                        <p>Best regards,<br>TrulyPOS Support Team</p>";
+                        
+            case 'order_confirmation':
+                return "<h2>Order Confirmation</h2>
+                        <p>Dear {$data['customer_name']},</p>
+                        <p>Your order has been confirmed:</p>
+                        <ul>
+                            <li>Order ID: {$data['order_id']}</li>
+                            <li>Plan: {$data['plan_name']}</li>
+                            <li>Amount: ₹{$data['amount']}</li>
+                        </ul>
+                        <p>We will send your license details once payment is processed.</p>
+                        <p>Thank you for choosing TrulyPOS!</p>";
+                        
+            default:
+                return "<p>Thank you for using TrulyPOS services.</p>";
+        }
+    }
+    
+    /**
+     * Log notification
+     */
+    private function log_notification($type, $data, $results)
+    {
+        $log_data = [
+            'type' => $type,
+            'recipient_email' => $data['email'] ?? null,
+            'recipient_phone' => $data['phone'] ?? null,
+            'email_sent' => isset($results['email']) ? ($results['email'] ? 'success' : 'failed') : 'not_attempted',
+            'whatsapp_sent' => isset($results['whatsapp']) ? ($results['whatsapp'] ? 'success' : 'failed') : 'not_attempted',
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+        
+        // Save to database if table exists
+        if ($this->CI->db->table_exists('notification_logs')) {
+            $this->CI->db->insert('notification_logs', $log_data);
+        }
+        
+        // Also log to file
+        log_message('info', 'Notification sent: ' . json_encode($log_data));
+    }
+    
+    /**
+     * Get notification statistics
+     */
+    public function get_notification_stats($days = 30)
+    {
+        if (!$this->CI->db->table_exists('notification_logs')) {
+            return [];
+        }
+        
+        $this->CI->db->where('created_at >=', date('Y-m-d H:i:s', strtotime("-{$days} days")));
+        $query = $this->CI->db->get('notification_logs');
+        
+        $stats = [
+            'total' => $query->num_rows(),
+            'email_success' => 0,
+            'email_failed' => 0,
+            'whatsapp_success' => 0,
+            'whatsapp_failed' => 0,
+            'by_type' => []
+        ];
+        
+        foreach ($query->result() as $row) {
+            if ($row->email_sent == 'success') $stats['email_success']++;
+            if ($row->email_sent == 'failed') $stats['email_failed']++;
+            if ($row->whatsapp_sent == 'success') $stats['whatsapp_success']++;
+            if ($row->whatsapp_sent == 'failed') $stats['whatsapp_failed']++;
+            
+            if (!isset($stats['by_type'][$row->type])) {
+                $stats['by_type'][$row->type] = 0;
+            }
+            $stats['by_type'][$row->type]++;
+        }
+        
+        return $stats;
+    }
+}

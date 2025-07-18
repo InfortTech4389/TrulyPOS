@@ -64,7 +64,16 @@ $route['contact'] = 'home/contact';
 $route['blog'] = 'home/blog';
 $route['blog/(:any)'] = 'home/blog_post/$1';
 $route['faq'] = 'home/faq';
-$route['testimonials'] = 'home/testimonials';
+$route['testimonials'] = 'testimonials/index';
+$route['testimonials/(:any)'] = 'testimonials/category/$1';
+
+// Setup Routes
+$route['setup'] = 'setupdb/index';
+$route['setup/run'] = 'setupdb/run';
+$route['setup/test_connection'] = 'setupdb/test';
+
+// Newsletter Route
+$route['newsletter/subscribe'] = 'home/newsletter_subscribe';
 
 // Feature Detail Routes
 $route['features/sales_billing'] = 'features/sales_billing';
@@ -94,16 +103,57 @@ $route['contact/submit'] = 'contact/submit';
 $route['contact/demo'] = 'contact/demo';
 $route['contact/demo_submit'] = 'contact/demo_submit';
 
-// Admin Routes
-$route['admin'] = 'admin/dashboard';
-$route['admin/login'] = 'admin/auth/login';
-$route['admin/logout'] = 'admin/auth/logout';
-$route['admin/dashboard'] = 'admin/dashboard/index';
-$route['admin/orders'] = 'admin/orders/index';
-$route['admin/licenses'] = 'admin/licenses/index';
-$route['admin/users'] = 'admin/users/index';
-$route['admin/content'] = 'admin/content/index';
-$route['admin/settings'] = 'admin/settings/index';
+// Admin Routes (comprehensive)
+$route['admin'] = 'admin/index';
+$route['admin/login'] = 'admin/login';
+$route['admin/logout'] = 'admin/logout';
+$route['admin/authenticate'] = 'admin/authenticate';
+
+// Customer Management
+$route['admin/customers'] = 'admin/customers';
+$route['admin/customers/(:num)'] = 'admin/customers/$1';
+$route['admin/customer_details/(:num)'] = 'admin/customer_details/$1';
+$route['admin/send_customer_message'] = 'admin/send_customer_message';
+
+// Payment Management
+$route['admin/payments'] = 'admin/payments';
+$route['admin/payments/(:num)'] = 'admin/payments/$1';
+$route['admin/payment_details/(:num)'] = 'admin/payment_details/$1';
+$route['admin/update_payment_status'] = 'admin/update_payment_status';
+$route['admin/process_refund'] = 'admin/process_refund';
+$route['admin/send_payment_receipt'] = 'admin/send_payment_receipt';
+
+// Enquiry Management
+$route['admin/enquiries'] = 'admin/enquiries';
+$route['admin/enquiries/(:num)'] = 'admin/enquiries/$1';
+$route['admin/enquiry_details/(:num)'] = 'admin/enquiry_details/$1';
+$route['admin/respond_enquiry'] = 'admin/respond_enquiry';
+$route['admin/get_enquiry_details/(:num)'] = 'admin/get_enquiry_details/$1';
+$route['admin/set_enquiry_priority'] = 'admin/set_enquiry_priority';
+$route['admin/mark_all_enquiries_read'] = 'admin/mark_all_enquiries_read';
+
+// License Management
+$route['admin/licenses'] = 'admin/licenses';
+$route['admin/licenses/(:num)'] = 'admin/licenses/$1';
+$route['admin/license_details/(:num)'] = 'admin/license_details/$1';
+
+// Newsletter Management
+$route['admin/newsletter'] = 'admin/newsletter';
+$route['admin/newsletter/(:num)'] = 'admin/newsletter/$1';
+$route['admin/send_newsletter'] = 'admin/send_newsletter';
+
+// Notification Management
+$route['admin/notifications'] = 'admin/notifications';
+
+// Settings
+$route['admin/settings'] = 'admin/settings';
+$route['admin/update_settings'] = 'admin/update_settings';
+
+// Legacy Admin Routes (for backward compatibility)
+$route['admin/contacts'] = 'admin/enquiries';
+$route['admin/testimonials'] = 'admin/testimonials';
+$route['admin/orders'] = 'admin/payments';
+$route['admin/newsletter_subscribers'] = 'admin/newsletter';
 
 // API Routes
 $route['api/contact'] = 'api/contact/submit';

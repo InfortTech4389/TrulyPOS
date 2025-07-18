@@ -6,9 +6,25 @@ class Payment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        
+        // Load libraries
+        $this->load->library('database');
+        $this->load->library('session');
+        $this->load->library('form_validation');
+        $this->load->library('email');
+        $this->load->library('Notification_service');
+        $this->load->library('Payment_gateway');
+        $this->load->library('input');
+        $this->load->library('output');
+        
+        // Load helpers
+        $this->load->helper(array('url'));
+        
+        // Load models
         $this->load->model('Order_model');
         $this->load->model('License_model');
-        $this->load->library('Payment_gateway');
+        $this->load->model('Content_model');
+        $this->load->model('Settings_model');
     }
 
     public function process()
@@ -47,8 +63,18 @@ class Payment extends CI_Controller {
                     
                     $this->License_model->insert_license($license_data);
                     
-                    // Send license email
-                    $this->send_license_email($order, $license_key);
+                    // Send license email using notification service
+                    $notification_data = [
+                        'customer_name' => $order->customer_name,
+                        'email' => $order->customer_email,
+                        'phone' => $order->customer_phone,
+                        'license_key' => $license_key,
+                        'plan_name' => $order->plan_name,
+                        'order_id' => $order->id,
+                        'download_link' => 'https://trulypos.com/download'
+                    ];
+                    
+                    $this->notification_service->send_notification('license_delivery', $notification_data);
                     
                     // Redirect to success page
                     $this->session->set_userdata('order_id', $order->id);

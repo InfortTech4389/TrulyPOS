@@ -28,3 +28,15 @@ ERROR - 2025-07-15 18:15:16 --> 404 Page Not Found: Restaurant/index
 ERROR - 2025-07-15 18:20:10 --> Severity: Warning --> mkdir(): Invalid path /workspaces/TrulyPOS/system/libraries/Session/drivers/Session_files_driver.php 137
 ERROR - 2025-07-15 18:20:10 --> Session: Configured save path '' is not a directory, doesn't exist or cannot be created.
 ERROR - 2025-07-15 18:20:10 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: ) /workspaces/TrulyPOS/system/libraries/Session/Session.php 137
+ERROR - 2025-07-15 18:43:23 --> Severity: Warning --> mkdir(): Invalid path /workspaces/TrulyPOS/system/libraries/Session/drivers/Session_files_driver.php 137
+ERROR - 2025-07-15 18:43:23 --> Session: Configured save path '' is not a directory, doesn't exist or cannot be created.
+ERROR - 2025-07-15 18:43:23 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: ) /workspaces/TrulyPOS/system/libraries/Session/Session.php 137
+ERROR - 2025-07-15 18:51:06 --> Severity: Warning --> mkdir(): Invalid path /workspaces/TrulyPOS/system/libraries/Session/drivers/Session_files_driver.php 137
+ERROR - 2025-07-15 18:51:06 --> Session: Configured save path '' is not a directory, doesn't exist or cannot be created.
+ERROR - 2025-07-15 18:51:06 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: ) /workspaces/TrulyPOS/system/libraries/Session/Session.php 137
+ERROR - 2025-07-15 18:51:10 --> Severity: Warning --> mkdir(): Invalid path /workspaces/TrulyPOS/system/libraries/Session/drivers/Session_files_driver.php 137
+ERROR - 2025-07-15 18:51:10 --> Session: Configured save path '' is not a directory, doesn't exist or cannot be created.
+ERROR - 2025-07-15 18:51:10 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: ) /workspaces/TrulyPOS/system/libraries/Session/Session.php 137
+ERROR - 2025-07-15 18:51:19 --> Severity: Warning --> mkdir(): Invalid path /workspaces/TrulyPOS/system/libraries/Session/drivers/Session_files_driver.php 137
+ERROR - 2025-07-15 18:51:19 --> Session: Configured save path '' is not a directory, doesn't exist or cannot be created.
+ERROR - 2025-07-15 18:51:19 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: ) /workspaces/TrulyPOS/system/libraries/Session/Session.php 137

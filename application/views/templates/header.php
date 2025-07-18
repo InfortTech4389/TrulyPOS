@@ -38,444 +38,172 @@
     <?php endif; ?>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="<?php echo base_url(); ?>">
-                <img src="<?php echo base_url('assets/images/trulypos-logo.png'); ?>" alt="Truly POS" height="40">
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
-                    </li>
-                    <li class="nav-item dropdown mega-dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="industriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Who We Serve
-                        </a>
-                        <div class="dropdown-menu mega-menu" aria-labelledby="industriesDropdown">
-                            <div class="mega-menu-container">
-                                <!-- Left Panel: Categories -->
-                                <div class="menu-categories">
-                                    <div class="category-item active" data-category="apparel">
-                                        <span>Apparel & Footwear</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="restaurant">
-                                        <span>Restaurants & Cafes</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="electronics">
-                                        <span>Electronics & Computers</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="hypermarket">
-                                        <span>Hypermarket & Departmental Stores</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="lifestyle">
-                                        <span>Lifestyle & Fashion</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="pharma">
-                                        <span>Pharma & Healthcare</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="grocery">
-                                        <span>Supermarket & Groceries</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                    <div class="category-item" data-category="specialized">
-                                        <span>Specialized Retail</span>
-                                        <i class="fas fa-chevron-right"></i>
-                                    </div>
-                                </div>
-                                
-                                <!-- Right Panel: Subcategories -->
-                                <div class="menu-subcategories">
-                                    <!-- Apparel & Footwear Subcategories -->
-                                    <div class="subcategory-group active" id="apparel-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-tshirt"></i>
-                                                </div>
-                                                <span>Apparel</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-user-tie"></i>
-                                                </div>
-                                                <span>Clothing</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-store"></i>
-                                                </div>
-                                                <span>Boutiques</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-mask"></i>
-                                                </div>
-                                                <span>Fancy Costume</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-shoe-prints"></i>
-                                                </div>
-                                                <span>Footwear</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-shopping-bag"></i>
-                                                </div>
-                                                <span>Readymade Garment</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-running"></i>
-                                                </div>
-                                                <span>Shoes</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-cut"></i>
-                                                </div>
-                                                <span>Textile</span>
-                                            </a>
-                                        </div>
-                                        <!-- Restaurants & Cafes Subcategories -->
-                                        <div class="subcategory-group" id="restaurant-subcategories">
-                                            <div class="subcategory-grid">
-                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
-                                                    <div class="subcategory-icon" style="background: #ffe0b2; color: #ff9800;"><i class="fas fa-utensils"></i></div>
-                                                    <span>Restaurants</span>
-                                                </a>
-                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
-                                                    <div class="subcategory-icon" style="background: #b2dfdb; color: #009688;"><i class="fas fa-coffee"></i></div>
-                                                    <span>Cafes</span>
-                                                </a>
-                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
-                                                    <div class="subcategory-icon" style="background: #c8e6c9; color: #388e3c;"><i class="fas fa-pizza-slice"></i></div>
-                                                    <span>Pizza Shops</span>
-                                                </a>
-                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
-                                                    <div class="subcategory-icon" style="background: #ffcdd2; color: #d32f2f;"><i class="fas fa-ice-cream"></i></div>
-                                                    <span>Ice Cream Parlors</span>
-                                                </a>
-                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
-                                                    <div class="subcategory-icon" style="background: #d1c4e9; color: #512da8;"><i class="fas fa-birthday-cake"></i></div>
-                                                    <span>Bakeries</span>
-                                                </a>
-                                                <a href="<?php echo base_url('industries/restaurants-cafes'); ?>" class="subcategory-item">
-                                                    <div class="subcategory-icon" style="background: #fff9c4; color: #fbc02d;"><i class="fas fa-hamburger"></i></div>
-                                                    <span>Quick Service</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Electronics & Computers Subcategories -->
-                                    <div class="subcategory-group" id="electronics-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-camera"></i>
-                                                </div>
-                                                <span>Camera & Accessories</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-desktop"></i>
-                                                </div>
-                                                <span>Computer Hardware</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-bolt"></i>
-                                                </div>
-                                                <span>Electrical</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-microchip"></i>
-                                                </div>
-                                                <span>Electronics</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-home"></i>
-                                                </div>
-                                                <span>Home Appliances</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-mobile-alt"></i>
-                                                </div>
-                                                <span>Mobile & Accessories</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-gamepad"></i>
-                                                </div>
-                                                <span>Games & Accessories</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Hypermarket & Departmental Subcategories -->
-                                    <div class="subcategory-group" id="hypermarket-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-building"></i>
-                                                </div>
-                                                <span>Hypermarket</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-store-alt"></i>
-                                                </div>
-                                                <span>Departmental Store</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-shopping-cart"></i>
-                                                </div>
-                                                <span>Superstore</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-link"></i>
-                                                </div>
-                                                <span>Retail Chain</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-shopping-bag"></i>
-                                                </div>
-                                                <span>Shopping Mall</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-store"></i>
-                                                </div>
-                                                <span>Convenience Store</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Lifestyle & Fashion Subcategories -->
-                                    <div class="subcategory-group" id="lifestyle-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-female"></i>
-                                                </div>
-                                                <span>Fashion Store</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-magic"></i>
-                                                </div>
-                                                <span>Beauty & Cosmetics</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-gem"></i>
-                                                </div>
-                                                <span>Jewelry</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-ring"></i>
-                                                </div>
-                                                <span>Accessories</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-heart"></i>
-                                                </div>
-                                                <span>Lifestyle Products</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-spa"></i>
-                                                </div>
-                                                <span>Wellness</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Pharma & Healthcare Subcategories -->
-                                    <div class="subcategory-group" id="pharma-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-pills"></i>
-                                                </div>
-                                                <span>Pharmacy</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-clinic-medical"></i>
-                                                </div>
-                                                <span>Medical Store</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-heartbeat"></i>
-                                                </div>
-                                                <span>Healthcare Products</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-stethoscope"></i>
-                                                </div>
-                                                <span>Surgical Equipment</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-leaf"></i>
-                                                </div>
-                                                <span>Ayurvedic Store</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-tooth"></i>
-                                                </div>
-                                                <span>Dental Clinic</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Supermarket & Groceries Subcategories -->
-                                    <div class="subcategory-group" id="grocery-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-shopping-basket"></i>
-                                                </div>
-                                                <span>Supermarket</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-store"></i>
-                                                </div>
-                                                <span>Grocery Store</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-shopping-cart"></i>
-                                                </div>
-                                                <span>Mini Market</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-leaf"></i>
-                                                </div>
-                                                <span>Organic Store</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-bread-slice"></i>
-                                                </div>
-                                                <span>Bakery</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-cheese"></i>
-                                                </div>
-                                                <span>Dairy Products</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Specialized Retail Subcategories -->
-                                    <div class="subcategory-group" id="specialized-subcategories">
-                                        <div class="subcategory-grid">
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-book"></i>
-                                                </div>
-                                                <span>Books & Stationery</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-dumbbell"></i>
-                                                </div>
-                                                <span>Sports & Fitness</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-puzzle-piece"></i>
-                                                </div>
-                                                <span>Toys & Games</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-car"></i>
-                                                </div>
-                                                <span>Automotive Parts</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-paw"></i>
-                                                </div>
-                                                <span>Pet Supplies</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-wrench"></i>
-                                                </div>
-                                                <span>Hardware & Tools</span>
-                                            </a>
-                                            <a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcategory-item">
-                                                <div class="subcategory-icon">
-                                                    <i class="fas fa-tree"></i>
-                                                </div>
-                                                <span>Garden & Nursery</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="<?php echo base_url(); ?>">
+            <img src="<?php echo base_url('assets/images/Trulylogo.jpg'); ?>" alt="Truly POS" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+                </li>
+                <!-- MEGA MENU DROPDOWN -->
+                <li class="nav-item dropdown mega-dropdown" style="position: relative;">
+                    <a class="nav-link dropdown-toggle" href="#" id="industriesDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Who We Serve
+                    </a>
+                    <div class="dropdown-menu mega-menu px-0 py-0 border-0 shadow" aria-labelledby="industriesDropdown">
+                        <div class="mega-menu-inner d-flex" style="background: #fff;">
+                            <!-- LEFT PANEL: CATEGORIES -->
+                            <div class="mega-menu-cats border-end px-3 py-4" style="width: 260px;">
+                                <ul class="list-unstyled mb-0" id="megaMenuCats">
+                                    <li class="cat-link active" data-target="apparel">
+                                        <i class="fas fa-tshirt me-2"></i> Apparel <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="electronics">
+                                        <i class="fas fa-bolt me-2"></i> Electronics <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="hypermarket">
+                                        <i class="fas fa-store me-2"></i> Hyperstores <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="lifestyle">
+                                        <i class="fas fa-gem me-2"></i> Lifestyle <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="pharma">
+                                        <i class="fas fa-pills me-2"></i> Pharma  <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="grocery">
+                                        <i class="fas fa-shopping-basket me-2"></i> Supermarkets<span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="specialized">
+                                        <i class="fas fa-puzzle-piece me-2"></i> Specialized Retail <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                    <li class="cat-link" data-target="multi-chain">
+                                        <i class="fas fa-network-wired me-2"></i> Multi-Chain <span class="float-end text-muted"><i class="fas fa-chevron-right"></i></span>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('features'); ?>">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('demo'); ?>">Live Demo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('pricing'); ?>">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('about'); ?>">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('contact'); ?>">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('blog'); ?>">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('testimonials'); ?>">Testimonials</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary ms-2" href="<?php echo base_url('buy'); ?>">Buy Now</a>
-                    </li>
-                </ul>
-            </div>
+                            <!-- RIGHT PANEL: SUBCATEGORIES -->
+                            <div class="mega-menu-content px-4 py-4 flex-grow-1 style="width: 460px">
+                                <!-- Apparel & Footwear -->
+                                <div class="subcat-panel active" id="subcat-apparel">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-apparel"><i class="fas fa-tshirt"></i></span><span class="subcat-label">Apparel</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-clothing"><i class="fas fa-user-tie"></i></span><span class="subcat-label">Clothing</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-boutique"><i class="fas fa-store"></i></span><span class="subcat-label">Boutiques</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-fancy"><i class="fas fa-theater-masks"></i></span><span class="subcat-label">Fancy Costume</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-footwear"><i class="fas fa-shoe-prints"></i></span><span class="subcat-label">Footwear</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-readymade"><i class="fas fa-shopping-bag"></i></span><span class="subcat-label">Readymade Garment</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-shoes"><i class="fas fa-running"></i></span><span class="subcat-label">Shoes</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/apparel-footwear'); ?>" class="subcat-box"><span class="subcat-icon bg-textile"><i class="fas fa-cut"></i></span><span class="subcat-label">Textile</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Electronics & Computers -->
+                                <div class="subcat-panel" id="subcat-electronics">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-camera"></i></span><span class="subcat-label">Camera & Accessories</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-desktop"></i></span><span class="subcat-label">Computer Hardware</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-bolt"></i></span><span class="subcat-label">Electrical</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-microchip"></i></span><span class="subcat-label">Electronics</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-home"></i></span><span class="subcat-label">Home Appliances</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-mobile-alt"></i></span><span class="subcat-label">Mobile & Accessories</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/electronics-computers'); ?>" class="subcat-box"><span class="subcat-icon bg-electronics"><i class="fas fa-gamepad"></i></span><span class="subcat-label">Games & Accessories</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Hypermarket & Departmental Stores -->
+                                <div class="subcat-panel" id="subcat-hypermarket">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcat-box"><span class="subcat-icon bg-hyper"><i class="fas fa-building"></i></span><span class="subcat-label">Hypermarket</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcat-box"><span class="subcat-icon bg-hyper"><i class="fas fa-store-alt"></i></span><span class="subcat-label">Departmental Store</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcat-box"><span class="subcat-icon bg-hyper"><i class="fas fa-shopping-cart"></i></span><span class="subcat-label">Superstore</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcat-box"><span class="subcat-icon bg-hyper"><i class="fas fa-link"></i></span><span class="subcat-label">Retail Chain</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcat-box"><span class="subcat-icon bg-hyper"><i class="fas fa-shopping-bag"></i></span><span class="subcat-label">Shopping Mall</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/hypermarket-departmental'); ?>" class="subcat-box"><span class="subcat-icon bg-hyper"><i class="fas fa-store"></i></span><span class="subcat-label">Convenience Store</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Lifestyle & Fashion -->
+                                <div class="subcat-panel" id="subcat-lifestyle">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcat-box"><span class="subcat-icon bg-lifestyle"><i class="fas fa-female"></i></span><span class="subcat-label">Fashion Store</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcat-box"><span class="subcat-icon bg-lifestyle"><i class="fas fa-magic"></i></span><span class="subcat-label">Beauty & Cosmetics</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcat-box"><span class="subcat-icon bg-lifestyle"><i class="fas fa-gem"></i></span><span class="subcat-label">Jewelry</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcat-box"><span class="subcat-icon bg-lifestyle"><i class="fas fa-ring"></i></span><span class="subcat-label">Accessories</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcat-box"><span class="subcat-icon bg-lifestyle"><i class="fas fa-heart"></i></span><span class="subcat-label">Lifestyle Products</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/lifestyle-fashion'); ?>" class="subcat-box"><span class="subcat-icon bg-lifestyle"><i class="fas fa-spa"></i></span><span class="subcat-label">Wellness</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Pharma & Healthcare -->
+                                <div class="subcat-panel" id="subcat-pharma">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcat-box"><span class="subcat-icon bg-pharma"><i class="fas fa-pills"></i></span><span class="subcat-label">Pharmacy</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcat-box"><span class="subcat-icon bg-pharma"><i class="fas fa-clinic-medical"></i></span><span class="subcat-label">Medical Store</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcat-box"><span class="subcat-icon bg-pharma"><i class="fas fa-heartbeat"></i></span><span class="subcat-label">Healthcare Products</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcat-box"><span class="subcat-icon bg-pharma"><i class="fas fa-stethoscope"></i></span><span class="subcat-label">Surgical Equipment</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcat-box"><span class="subcat-icon bg-pharma"><i class="fas fa-leaf"></i></span><span class="subcat-label">Ayurvedic Store</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/pharma-healthcare'); ?>" class="subcat-box"><span class="subcat-icon bg-pharma"><i class="fas fa-tooth"></i></span><span class="subcat-label">Dental Clinic</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Supermarket & Groceries -->
+                                <div class="subcat-panel" id="subcat-grocery">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcat-box"><span class="subcat-icon bg-grocery"><i class="fas fa-shopping-basket"></i></span><span class="subcat-label">Supermarket</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcat-box"><span class="subcat-icon bg-grocery"><i class="fas fa-store"></i></span><span class="subcat-label">Grocery Store</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcat-box"><span class="subcat-icon bg-grocery"><i class="fas fa-shopping-cart"></i></span><span class="subcat-label">Mini Market</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcat-box"><span class="subcat-icon bg-grocery"><i class="fas fa-leaf"></i></span><span class="subcat-label">Organic Store</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcat-box"><span class="subcat-icon bg-grocery"><i class="fas fa-bread-slice"></i></span><span class="subcat-label">Bakery</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/supermarket-groceries'); ?>" class="subcat-box"><span class="subcat-icon bg-grocery"><i class="fas fa-cheese"></i></span><span class="subcat-label">Dairy Products</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Specialized Retail -->
+                                <div class="subcat-panel" id="subcat-specialized">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-book"></i></span><span class="subcat-label">Books & Stationery</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-dumbbell"></i></span><span class="subcat-label">Sports & Fitness</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-puzzle-piece"></i></span><span class="subcat-label">Toys & Games</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-car"></i></span><span class="subcat-label">Automotive Parts</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-paw"></i></span><span class="subcat-label">Pet Supplies</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-wrench"></i></span><span class="subcat-label">Hardware & Tools</span></a></div>
+                                        <div class="col"><a href="<?php echo base_url('industries/specialized-retail'); ?>" class="subcat-box"><span class="subcat-icon bg-special"><i class="fas fa-tree"></i></span><span class="subcat-label">Garden & Nursery</span></a></div>
+                                    </div>
+                                </div>
+                                <!-- Multi-Chain operations -->
+                                <div class="subcat-panel" id="subcat-multi-chain">
+                                    <div class="row row-cols-4 g-3">
+                                        <div class="col"><a href="#" class="subcat-box"><span class="subcat-icon bg-multi"><i class="fas fa-network-wired"></i></span><span class="subcat-label">Franchise Stores</span></a></div>
+                                        <div class="col"><a href="#" class="subcat-box"><span class="subcat-icon bg-multi"><i class="fas fa-store"></i></span><span class="subcat-label">Company-Owned Outlets</span></a></div>
+                                        <div class="col"><a href="#" class="subcat-box"><span class="subcat-icon bg-multi"><i class="fas fa-globe"></i></span><span class="subcat-label">International Chains</span></a></div>
+                                    </div>
+                                </div>
+                            </div><!-- mega-menu-content -->
+                        </div><!-- mega-menu-inner -->
+                    </div>
+                </li>
+                <!-- END MEGA MENU DROPDOWN -->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('features'); ?>">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('demo'); ?>">Live Demo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('pricing'); ?>">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('contact'); ?>">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary ms-2" href="<?php echo base_url('buy'); ?>">Buy Now</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Main Content -->
     <main class="main-content">

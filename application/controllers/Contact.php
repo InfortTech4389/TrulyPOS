@@ -7,10 +7,14 @@ class Contact extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->database();
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->library('recaptcha');
+        $this->load->library('email');
+        $this->load->library('Notification_service');
         $this->load->helper('form');
+        $this->load->model('Contact_model');
+        $this->load->model('Settings_model');
     }
 
     public function index()
@@ -59,8 +63,19 @@ class Contact extends CI_Controller {
         // Save to database (you would need to create contacts table)
         // $this->db->insert('contacts', $data);
 
-        // Send email notification
-        $this->send_notification_email($data);
+        // Send notifications using the new service
+        $notification_data = [
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'company' => $data['company'],
+            'subject' => $data['subject'],
+            'message' => $data['message'],
+            'ip_address' => $data['ip_address'],
+            'user_agent' => $data['user_agent']
+        ];
+
+        $results = $this->notification_service->send_notification('contact_form', $notification_data);
 
         $this->session->set_flashdata('success', 'Thank you for your message. We will get back to you soon!');
         redirect('contact');
@@ -113,8 +128,19 @@ class Contact extends CI_Controller {
         // Save demo request
         // $this->db->insert('demo_requests', $data);
 
-        // Send demo notification
-        $this->send_demo_notification($data);
+        // Send demo notifications using the new service
+        $notification_data = [
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'company' => $data['company'],
+            'business_type' => $data['business_type'],
+            'plan_interest' => $data['plan_interest'],
+            'preferred_time' => $data['preferred_time'],
+            'requirements' => $data['requirements']
+        ];
+
+        $results = $this->notification_service->send_notification('demo_request', $notification_data);
 
         $this->session->set_flashdata('success', 'Demo request submitted successfully! Our team will contact you within 24 hours.');
         redirect('contact/demo');

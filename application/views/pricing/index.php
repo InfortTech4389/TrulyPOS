@@ -33,6 +33,10 @@
                             <div class="card-body text-center p-4">
                                 <h3 class="plan-name fw-bold mb-3"><?= $plan['name'] ?></h3>
                                 
+                                <?php if(isset($plan['description']) && !empty($plan['description'])): ?>
+                                    <p class="plan-description text-muted mb-3"><?= $plan['description'] ?></p>
+                                <?php endif; ?>
+                                
                                 <div class="price-section mb-4">
                                     <div class="price-display">
                                         <span class="price-amount yearly-price"><?= $plan['price'] ?></span>
@@ -72,7 +76,11 @@
                                     <?php endforeach; ?>
                                 </div>
 
-                                <a href="<?= base_url('buy?plan=' . strtolower($plan['name']) . '&type=retail') ?>" class="btn <?= $plan['button_class'] ?> w-100 btn-lg"><?= $plan['button_text'] ?></a>
+                                <?php 
+                                $plan_identifier = isset($plan['id']) ? $plan['id'] : strtolower($plan['name']);
+                                $buy_url = base_url('buy?plan=' . $plan_identifier . '&type=retail');
+                                ?>
+                                <a href="<?= $buy_url ?>" class="btn <?= $plan['button_class'] ?> w-100 btn-lg"><?= $plan['button_text'] ?></a>
                             </div>
                         </div>
                     </div>

@@ -73,24 +73,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'trulypos_website',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+// Environment-based database configuration
+if (defined('ENVIRONMENT') && ENVIRONMENT === 'production') {
+    // Production MySQL Database Configuration
+    $db['default'] = array(
+        'dsn'	=> '',
+        'hostname' => 'localhost',
+        'username' => 'trulypos_root',
+        'password' => '4389BGAshri@*',
+        'database' => 'trulypos_web',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => FALSE,
+        'db_debug' => FALSE, // Disable debug in production
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8mb4',
+        'dbcollat' => 'utf8mb4_unicode_ci',
+        'swap_pre' => '',
+        'encrypt' => FALSE,
+        'compress' => FALSE,
+        'stricton' => FALSE,
+        'failover' => array(),
+        'save_queries' => FALSE // Disable query saving in production for performance
+    );
+} else {
+    // Development SQLite Database Configuration
+    $db['default'] = array(
+        'dsn'	=> '',
+        'hostname' => '',
+        'username' => '',
+        'password' => '',
+        'database' => APPPATH . 'database/trulypos.db',
+        'dbdriver' => 'sqlite3',
+        'dbprefix' => '',
+        'pconnect' => FALSE,
+        'db_debug' => TRUE,
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'encrypt' => FALSE,
+        'compress' => FALSE,
+        'stricton' => FALSE,
+        'failover' => array(),
+        'save_queries' => TRUE
+    );
+}

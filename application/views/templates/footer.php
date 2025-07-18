@@ -103,6 +103,62 @@
         <?php endforeach; ?>
     <?php endif; ?>
     
+    <!-- Mega Menu JavaScript -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.getElementById("megaMenuToggle");
+        const megaMenu = document.getElementById("megaMenu");
+        const industryItems = document.querySelectorAll("#industryList .industry-item");
+        const subcatPanels = document.querySelectorAll(".mega-subcats");
+
+        if (menuToggle && megaMenu) {
+            // Show/Hide megamenu on hover
+            menuToggle.addEventListener("mouseenter", function() {
+                megaMenu.style.display = "block";
+                menuToggle.classList.add("active");
+            });
+            
+            menuToggle.addEventListener("mouseleave", function() {
+                setTimeout(() => {
+                    if (!megaMenu.matches(':hover')) {
+                        megaMenu.style.display = "none";
+                        menuToggle.classList.remove("active");
+                    }
+                }, 300);
+            });
+            
+            megaMenu.addEventListener("mouseenter", function() {
+                megaMenu.style.display = "block";
+                menuToggle.classList.add("active");
+            });
+            
+            megaMenu.addEventListener("mouseleave", function() {
+                megaMenu.style.display = "none";
+                menuToggle.classList.remove("active");
+            });
+
+            // Industry hover changes subcategory grid
+            industryItems.forEach(item => {
+                item.addEventListener("mouseenter", function() {
+                    // Remove active class from all items
+                    industryItems.forEach(i => i.classList.remove("active"));
+                    // Add active class to current item
+                    item.classList.add("active");
+                    
+                    // Hide all subcategory panels
+                    subcatPanels.forEach(panel => panel.classList.add("d-none"));
+                    
+                    // Show the selected subcategory panel
+                    const subPanel = document.getElementById("subcat-" + item.dataset.industry);
+                    if (subPanel) {
+                        subPanel.classList.remove("d-none");
+                    }
+                });
+            });
+        }
+    });
+    </script>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>

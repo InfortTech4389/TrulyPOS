@@ -6,13 +6,20 @@ class Buy extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Order_model');
-        $this->load->library('Payment_gateway');
-        $this->load->helper('url');
+        
+        // Load libraries
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->library('Payment_gateway');
+        $this->load->library('Notification_service');
         $this->load->library('recaptcha');
-        $this->load->helper('form');
+        $this->load->library('input');
+        
+        // Load helpers
+        $this->load->helper(array('url', 'form'));
+        
+        // Load models
+        $this->load->model('Order_model');
     }
 
     public function index()
@@ -98,6 +105,23 @@ class Buy extends CI_Controller {
             $this->session->set_flashdata('error', 'Failed to create order');
             redirect('buy?plan=' . $plan . '&type=' . $type);
         }
+
+        // Send order confirmation notification
+        $notification_data = [
+            'customer_name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'phone' => $this->input->post('phone'),
+            'company_name' => $this->input->post('company'),
+            'order_id' => $order_id,
+            'plan_name' => $plan,
+            'plan_type' => $type,
+            'billing_cycle' => $billing_cycle,
+            'amount' => $amount,
+            'customer_email' => $this->input->post('email'),
+            'customer_phone' => $this->input->post('phone')
+        ];
+        
+        $this->notification_service->send_notification('order_confirmation', $notification_data);
 
         // Create Razorpay order
         $razorpay_order_data = [
