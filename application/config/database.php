@@ -79,9 +79,9 @@ if (defined('ENVIRONMENT') && ENVIRONMENT === 'production') {
     $db['default'] = array(
         'dsn'	=> '',
         'hostname' => 'localhost',
-        'username' => 'trulypos_root',
-        'password' => '4389BGAshri@*',
-        'database' => 'trulypos_web',
+        'username' => 'your_db_username',
+        'password' => 'your_db_password',
+        'database' => 'your_db_name',
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => FALSE,
