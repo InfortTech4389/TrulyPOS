@@ -1,9 +1,13 @@
 # TrulyPOS Production .htaccess Configuration
 RewriteEngine On
 
-# Force HTTPS in production (uncomment for production)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Remove www from URL (optional)
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Force HTTPS in production
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Remove index.php from URLs
 RewriteCond %{THE_REQUEST} /index\.php/([^\s\?]*) [NC]

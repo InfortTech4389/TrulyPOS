@@ -10,8 +10,8 @@ class Pricing extends CI_Controller {
         // Load helpers
         $this->load->helper('url');
         
-        // Load libraries
-        $this->load->library('database');
+        // Load database and libraries
+        $this->load->database();
         
         // Load models
         $this->load->model('Content_model');

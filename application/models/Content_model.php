@@ -30,9 +30,34 @@ class Content_model extends CI_Model {
 
     public function get_pricing_plans()
     {
+        $this->db->where('type', 'pricing_plan');
         $this->db->where('status', 'active');
-        $this->db->order_by('sort_order', 'ASC');
-        return $this->db->get('pricing_plans')->result();
+        $this->db->order_by('id', 'ASC');
+        $result = $this->db->get('content')->result();
+        
+        // Convert content table structure to pricing plan structure
+        $plans = [];
+        foreach ($result as $plan) {
+            $meta = json_decode($plan->meta_data, true);
+            if ($meta) {
+                $plan_obj = new stdClass();
+                $plan_obj->id = $plan->id;
+                $plan_obj->name = $plan->title;
+                $plan_obj->description = $plan->content;
+                $plan_obj->price = $meta['price'] ?? 0;
+                $plan_obj->currency = $meta['currency'] ?? 'INR';
+                $plan_obj->billing_cycle = $meta['billing_cycle'] ?? 'yearly';
+                $plan_obj->max_locations = $meta['max_locations'] ?? 1;
+                $plan_obj->max_users = $meta['max_users'] ?? 2;
+                $plan_obj->features = $meta['features'] ?? '';
+                $plan_obj->is_popular = $meta['is_popular'] ?? 0;
+                $plan_obj->support_type = $meta['support_type'] ?? 'Email';
+                $plan_obj->status = $plan->status;
+                $plans[] = $plan_obj;
+            }
+        }
+        
+        return $plans;
     }
 
     public function get_team_members()

@@ -7,15 +7,14 @@ class Payment extends CI_Controller {
     {
         parent::__construct();
         
-        // Load libraries
-        $this->load->library('database');
+        // Load database and libraries
+        $this->load->database();
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->library('email');
         $this->load->library('Notification_service');
         $this->load->library('Payment_gateway');
-        $this->load->library('input');
-        $this->load->library('output');
+        // Note: input and output are core CI classes, automatically available
         
         // Load helpers
         $this->load->helper(array('url'));

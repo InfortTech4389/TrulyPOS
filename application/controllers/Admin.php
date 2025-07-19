@@ -24,8 +24,7 @@ class Admin extends CI_Controller {
         $this->load->model('Testimonial_model');
         $this->load->model('Settings_model');
         
-        // Load input library explicitly
-        $this->load->library('input');
+        // Note: input is a core CI class, automatically available
         
         // Check if user is logged in (basic session check)
         $current_method = $this->router->fetch_method();

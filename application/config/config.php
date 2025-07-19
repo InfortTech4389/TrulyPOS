@@ -4,20 +4,20 @@ if (isset($_SERVER['HTTP_HOST'])) {
     if (strpos($_SERVER['HTTP_HOST'], 'trulypos.com') !== false) {
         // Production environment
         $config['base_url'] = 'https://trulypos.com/';
-        define('ENVIRONMENT', 'production');
+        // Don't redefine ENVIRONMENT - it's already defined in index.php
     } elseif (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false) {
         // Local development environment
         $config['base_url'] = 'http://localhost:8080/';
-        define('ENVIRONMENT', 'development');
+        // Don't redefine ENVIRONMENT - it's already defined in index.php
     } else {
         // Default to production for other domains
         $config['base_url'] = 'https://' . $_SERVER['HTTP_HOST'] . '/';
-        define('ENVIRONMENT', 'production');
+        // Don't redefine ENVIRONMENT - it's already defined in index.php
     }
 } else {
     // CLI or other environments
     $config['base_url'] = 'https://trulypos.com/';
-    define('ENVIRONMENT', 'production');
+    // Don't redefine ENVIRONMENT - it's already defined in index.php
 }
 
 /*
@@ -25,12 +25,8 @@ if (isset($_SERVER['HTTP_HOST'])) {
 | Log Configuration
 |--------------------------------------------------------------------------
 */
-// Set logging based on environment
-if (defined('ENVIRONMENT') && ENVIRONMENT === 'production') {
-    $config['log_threshold'] = 1; // Error logs only in production
-} else {
-    $config['log_threshold'] = 4; // All logs in development
-}
+// Set logging - suppress PHP 8+ deprecation warnings
+$config['log_threshold'] = 2; // Increase to info level to reduce noise
 
 $config['log_path'] = APPPATH . 'logs/';
 $config['log_file_extension'] = '';
@@ -116,13 +112,6 @@ $config['directory_trigger'] = 'd';
 |--------------------------------------------------------------------------
 */
 $config['allow_get_array'] = TRUE;
-
-/*
-|--------------------------------------------------------------------------
-| Error Logging Threshold
-|--------------------------------------------------------------------------
-*/
-$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------

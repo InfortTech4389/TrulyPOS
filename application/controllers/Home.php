@@ -12,8 +12,7 @@ class Home extends CI_Controller {
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->library('Notification_service');
-        $this->load->library('input');
-        $this->load->library('output');
+        // Note: input and output are core CI classes, automatically available
         
         // Load helpers
         $this->load->helper(array('url', 'form', 'text', 'date'));

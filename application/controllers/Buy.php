@@ -13,7 +13,7 @@ class Buy extends CI_Controller {
         $this->load->library('Payment_gateway');
         $this->load->library('Notification_service');
         $this->load->library('recaptcha');
-        $this->load->library('input');
+        // Note: input is a core CI class, automatically available
         
         // Load helpers
         $this->load->helper(array('url', 'form'));

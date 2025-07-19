@@ -12,6 +12,7 @@ class Contact extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('email');
         $this->load->library('Notification_service');
+        $this->load->library('recaptcha');
         $this->load->helper('form');
         $this->load->model('Contact_model');
         $this->load->model('Settings_model');

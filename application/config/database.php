@@ -98,21 +98,21 @@ if (defined('ENVIRONMENT') && ENVIRONMENT === 'production') {
         'save_queries' => FALSE // Disable query saving in production for performance
     );
 } else {
-    // Development SQLite Database Configuration
+    // Development MySQL Database Configuration (matching production environment)
     $db['default'] = array(
-        'dsn'	=> '',
-        'hostname' => '',
-        'username' => '',
+        'dsn'	=> 'mysql:host=127.0.0.1;port=3306;dbname=trulypos_web;charset=utf8mb4',
+        'hostname' => '127.0.0.1',
+        'username' => 'root',
         'password' => '',
-        'database' => APPPATH . 'database/trulypos.db',
-        'dbdriver' => 'sqlite3',
+        'database' => 'trulypos_web',
+        'dbdriver' => 'pdo',
         'dbprefix' => '',
         'pconnect' => FALSE,
         'db_debug' => TRUE,
         'cache_on' => FALSE,
         'cachedir' => '',
-        'char_set' => 'utf8',
-        'dbcollat' => 'utf8_general_ci',
+        'char_set' => 'utf8mb4',
+        'dbcollat' => 'utf8mb4_unicode_ci',
         'swap_pre' => '',
         'encrypt' => FALSE,
         'compress' => FALSE,
